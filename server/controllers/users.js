@@ -11,9 +11,18 @@ app.get("/", (req, res) => {
     });
 
 });
+app.get("/:id", (req, res) => {
+
+    user.get(req.params.id, (err, data) => {
+        if(err) throw err;
+        res.send(data);
+    });
+
+});
 app.post("/", (req, res) => {
 
-    user.add({ FirstName: "Steve", LastName: "Irwin", Password: "BobbyTables" }, (err, data) => {
+    console.log(req.body);
+    user.add(req.body, (err, data) => {
         if(err) throw err;
         res.send(data);
     });
