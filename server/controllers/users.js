@@ -3,43 +3,30 @@ const user = require('../models/user');
 
 const app = express.Router();
 
-app.get("/", (req, res) => {
-
-    user.getAll((err, data) => {
-        if(err) throw err;
-        res.send(data);
-    });
-
+app.get("/", async (req, res, next) => {
+    user.getAll()
+    .then(x=>  res.send(x) )
+    .catch(next)
 });
-app.get("/:id", (req, res) => {
-
-    user.get(req.params.id, (err, data) => {
-        if(err) throw err;
-        res.send(data);
-    });
-
+app.get("/:id", (req, res, next) => {
+    user.get(req.params.id)
+    .then(x=>  res.send(x) )
+    .catch(next)
 });
-app.post("/", (req, res) => {
-
-    console.log(req.body);
-    user.add(req.body, (err, data) => {
-        if(err) throw err;
-        res.send(data);
-    });
-
+app.post("/", (req, res, next) => {
+    user.add(req.body)
+    .then(x=>  res.send(x) )
+    .catch(next)
 });
-app.post("/login", (req, res) => {
-    user.login(req.body.email, req.body.password, (err, data) => {
-        if(err) throw err;
-        res.send(data);
-    });
+app.post("/login", (req, res, next) => {
+    user.login(req.body.email, req.body.password)
+    .then(x=>  res.send(x) )
+    .catch(next)
 });
-app.post("/changePassword", (req, res) => {
-    user.changePassword(req.body.email, req.body.oldPassword, req.body.newPassword, (err, data) => {
-        if(err) throw err;
-        res.send(data);
-    });
-
+app.post("/changePassword", (req, res, next) => {
+    user.changePassword(req.body.email, req.body.oldPassword, req.body.newPassword)
+    .then(x=>  res.send(x) )
+    .catch(next)
 });
 
 module.exports = app;
