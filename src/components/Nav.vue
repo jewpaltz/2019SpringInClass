@@ -21,17 +21,25 @@
                     <router-link class="nav-link disabled" to="#"  active-class="active">Disabled</router-link>
                 </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline mt-2 mt-md-0" v-if="!user">
+                <a href="#" class="nav-link" @click.prevent="login">Login</a>
+                <a href="#" class="nav-link">Sign Up</a>
             </form>
+            <span class="navbar-text" v-if="user">Welcome {{user.name}}</span>
         </div>
     </nav>
 </template>
 
 <script>
 export default {
-
+    data: ()=>({
+        user: null
+    }),
+    methods: {
+        login(){
+            this.user = { name: "Easwaren" };
+        }
+    }
 }
 </script>
 
