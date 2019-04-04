@@ -8,9 +8,16 @@ const model = {
         return await conn.query("SELECT * FROM 2019Spring_Persons");   
     },
     async get(id){
-        return await conn.query("SELECT * FROM 2019Spring_Persons WHERE Id=?", id);    
+        const data = await conn.query("SELECT * FROM 2019Spring_Persons WHERE Id=?", id);
+        if(!data){
+            throw Error("User not found");
+        }
+        return data[0];
     },
     async add(input){
+        if(!input.Password){
+            throw Error('Password is Required');
+        }
         if(input.Password.length < 8){
             throw Error('A longer Password is Required');
         }
