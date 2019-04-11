@@ -14,13 +14,15 @@ export function login(){
 
 export async function api(url, data){
     let response = null;
+    let headers = { "Authorization": `Bearer ${Globals.token}` }
     if(!data){
-        response = await fetch(API_ROOT + url);
+        response = await fetch(API_ROOT + url, { headers });
     }else{
         response = await fetch(API_ROOT + url, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             headers: {
+                ...headers,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(data), // body data type must match "Content-Type" header
