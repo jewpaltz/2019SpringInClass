@@ -79,7 +79,7 @@ export default {
               toastr.success("You've registered successfully!")
             } catch (error) {
               Globals.errors.push(error);
-              toastr.error(error.msg);
+              toastr.error(error.message);
             }
         }
     }

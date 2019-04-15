@@ -58,7 +58,7 @@ export default {
               toastr.success("You've logged in successfully!")
             } catch (error) {
               Globals.errors.push(error);
-              toastr.error(error.msg);
+              toastr.error(error.message);
             }
         }
     }

@@ -61,7 +61,7 @@ const model = {
             await conn.query(`Update 2019Spring_Persons P
                             Set ?
                         WHERE P.id=?`,[ {Password: hashedPassword }, data[0].id]);
-            return { status: "success", msg: "Password Succesfully Changed" };
+            return { status: "success", message: "Password Succesfully Changed" };
         }else{
             throw Error('Wrong Password');
         }
