@@ -36,16 +36,6 @@
       </div>
     </div>
     </div>
-    <div class="col-lg-6">
-      <div class="card border-success" v-if="newUser">
-        <div class="card-body">
-          <h4 class="card-title">Congrats! You've Registered</h4>
-          <p class="card-text">
-            {{newUser.FirstName}} {{newUser.LastName}} 
-          </p>
-        </div>
-      </div>
-    </div>
 </div>
 </template>
 
@@ -64,7 +54,7 @@ export default {
         async submit(){
             try {
               const m = await Login(this.data);
-              this.newUser = m.user;
+              this.$router.push(Globals.redirectRoute)
               toastr.success("You've logged in successfully!")
             } catch (error) {
               Globals.errors.push(error);
