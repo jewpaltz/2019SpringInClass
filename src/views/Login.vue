@@ -30,8 +30,10 @@
                   <input type="password" v-model="data.password"
                     class="form-control" name="Password" id="Password" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-success">Login</button>
             </form>
+            <br />
+            <button class="btn btn-primary btn-block" @click.prevent="facebookLogin">Log in with Facebook</button>
         </div>
       </div>
     </div>
@@ -42,6 +44,8 @@
 <script>
 import { Globals } from "@/models/api";
 import { Login } from "@/models/users";
+import * as fb from "@/models/facebook";
+
 import toastr from 'toastr';
 
 
@@ -60,6 +64,11 @@ export default {
               Globals.errors.push(error);
               toastr.error(error.message);
             }
+        },
+        async facebookLogin(){
+          const m = await fb.Login();
+          console.log( {m} );
+          Globals.user = { FirstName: m.name, Email: m.email }
         }
     }
 }
