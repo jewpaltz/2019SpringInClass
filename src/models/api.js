@@ -8,9 +8,6 @@ export const Globals = {
     }
 }
 
-export function login(){
-    Globals.user = { name: "Bernie" }
-}
 
 export async function api(url, data){
     let response = null;

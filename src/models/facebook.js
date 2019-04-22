@@ -1,4 +1,4 @@
-
+import { oAuthLogin } from "./users";
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -30,7 +30,9 @@
                 console.log(response);
                 if(response.status === "connected"){
                     FB.api("me?fields=id,name,email", response2 => {
-                        resolve(response2);
+                        oAuthLogin(response.authResponse.accessToken, response2.id)
+                        .then(x=> resolve({ x, response2 }))
+                        
                     })
                 }else{
                     reject(Error("User did not log in"))

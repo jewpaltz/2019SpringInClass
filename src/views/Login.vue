@@ -57,7 +57,7 @@ export default {
     methods: {
         async submit(){
             try {
-              const m = await Login(this.data);
+              await Login(this.data);
               this.$router.push(Globals.redirectRoute)
               toastr.success("You've logged in successfully!")
             } catch (error) {
@@ -68,7 +68,6 @@ export default {
         async facebookLogin(){
           const m = await fb.Login();
           console.log( {m} );
-          Globals.user = { FirstName: m.name, Email: m.email }
         }
     }
 }
