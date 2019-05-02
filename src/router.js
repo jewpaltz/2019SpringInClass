@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import MyFriends from "./views/MyFriends.vue";
 import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
+import Cart from "./views/ShoppingCart.vue";
 import { Globals } from '@/models/api';
 
 Vue.use(Router)
@@ -31,11 +32,8 @@ const router = new Router({
       name: 'register',
       component: Register
     },
-    {
-      path: '/Login',
-      name: 'login',
-      component: Login
-    },
+    { path: '/Login', name: 'login', component: Login },
+    { path: '/Cart', name: 'cart', component: Cart },
     {
       path: '/about',
       name: 'about',

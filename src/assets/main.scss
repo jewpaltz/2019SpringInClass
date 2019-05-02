@@ -1,6 +1,8 @@
 
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'toastr/toastr.scss';
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
 
 #main {
   margin-top: 75px;
