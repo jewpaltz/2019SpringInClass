@@ -26,7 +26,7 @@
                         {{item.name}} ({{item.qty}})
                         <span class="badge badge-secondary badge-pill">${{item.qty * item.pricePerItem}}</span>
                     </div>
-                        <form class="form-inline d-flex justify-content-between align-items-center" v-if="item.isEditing">
+                        <form class="form-inline" v-if="item.isEditing">
                             <div class="form-group">
                                 <label for="name">Item</label>
                                 <input type="text" v-model="item.name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
@@ -34,13 +34,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="text" v-model="item.pricePerItem" id="price" class="form-control" placeholder="" aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">price of item</small>
+                                <input type="text" v-model="item.pricePerItem" id="price" class="form-control" placeholder="" aria-describedby="helpId" style="width:50px">
                             </div>
                             <div class="form-group">
                                 <label for="qty">Quantity</label>
-                                <input type="number" v-model="item.qty" id="qty" class="form-control" placeholder="" aria-describedby="helpId">
-                                <small id="helpId" class="text-muted">name of item</small>
+                                <input type="number" v-model="item.qty" id="qty" class="form-control" placeholder="" aria-describedby="helpId" style="width:50px">
                             </div>
                             <button @click="item.isEditing = false" class="btn btn-sm btn-primary">
                                 <i class="fa fa-subway" aria-hidden="true"></i>
@@ -73,5 +71,16 @@ export default {
 </script>
 
 <style>
-
+    label {
+        position: absolute;
+        font-size: small;
+        margin: -15px 5px;
+    }
+    input.form-control {
+        padding: 25px 5px;
+    }
+    .text-muted {
+        position: absolute;
+        margin: 15px 5px;
+    }
 </style>
