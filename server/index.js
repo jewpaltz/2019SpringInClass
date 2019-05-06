@@ -1,6 +1,7 @@
 const express   = require('express');
 const path      = require('path');
 const users     = require('./controllers/users');
+const stripeController     = require('./controllers/stripe');
 const userModel     = require('./models/user');
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../NoFramework")));
 
 app.use('/users', users);
+app.use('/stripe', stripeController);
 
 app.get("*", (req, res)=> res.sendFile(path.join(__dirname, "../dist/index.html")))
 
